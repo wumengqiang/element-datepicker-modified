@@ -1,12 +1,12 @@
 <template>
-  <table @click="handleHalfyearTableClick"  class="el-month-table">
+  <table @click="handleHalfyearTableClick"  class="el-halfyear-table">
     <tbody>
     <tr>
       <td :class="getCellStyle(0)">
-        <a class="cell">{{ t('el.datepicker.months.halfyear.first') }}</a>
+        <a class="cell">上半年</a>
       </td>
       <td :class="getCellStyle(1)">
-        <a class="cell">{{ t('el.datepicker.months.halfyear.second') }}</a>
+        <a class="cell">下半年</a>
       </td>
     </tr>
     </tbody>
@@ -14,7 +14,6 @@
 </template>
 
 <script type="text/babel">
-  import Locale from 'element-ui/src/mixins/locale';
   import { hasClass } from 'element-ui/src/utils/dom';
 
   export default {
@@ -25,7 +24,6 @@
               type: Number
           }
       },
-      mixins: [Locale],
       methods: {
           getCellStyle(halfyear) {
               const style = {};

@@ -187,11 +187,9 @@
           },
 
           selectionMode(newVal) {
-              if (newVal === 'month') {
+              if (['month', 'quarter', 'halfyear'].indexOf(newVal) !== -1) {
                   /* istanbul ignore next */
-                  if (this.currentView !== 'year' || this.currentView !== 'month') {
-                      this.currentView = 'month';
-                  }
+                  this.currentView = newVal;
               } else if (newVal === 'week') {
                   this.week = getWeekNumber(this.date);
               }
@@ -221,15 +219,6 @@
           showYearPicker() {
               this.currentView = 'year';
           },
-
-          // XXX: 没用到
-          // handleLabelClick() {
-          //   if (this.currentView === 'date') {
-          //     this.showMonthPicker();
-          //   } else if (this.currentView === 'month') {
-          //     this.showYearPicker();
-          //   }
-          // },
 
           prevMonth() {
               this.month--;
@@ -307,16 +296,18 @@
           },
 
           handleHalfyearPick(halfyear) {
+              this.halfyear = halfyear;
               const selectionMode = this.selectionMode;
               if (selectionMode === 'halfyear') {
                   this.resetDate();
                   let startMonth = new Date(this.date.getFullYear(), halfyear * 6, 1);
-                  let endMonth = new Date(this.date.getFullYear(), halfyear * 6 + 6, halfyear + 30); // 6.30 12.31 
+                  let endMonth = new Date(this.date.getFullYear(), halfyear * 6 + 5, halfyear + 30); // 6.30 12.31 
                   this.$emit('pick', [startMonth, endMonth]);
               }
           },
 
           handleQuarterPick(quarter) {
+              this.quarter = quarter;
               const selectionMode = this.selectionMode;
               if (selectionMode === 'quarter') {
                   this.resetDate();
@@ -349,6 +340,8 @@
               this.date.setFullYear(year);
               if (this.selectionMode === 'year') {
                   this.$emit('pick', new Date(year, 0, 1));
+              } else if (this.selectionMode === 'halfyear' || this.selectionMode === 'quarter') {
+                  this.currentView = this.selectionMode;
               } else {
                   this.currentView = 'month';
               }
@@ -413,6 +406,8 @@
               firstDayOfWeek: 7,
               year: null,
               month: null,
+              halfyear: null,
+              quarter: null,
               week: null,
               showWeekNumber: false,
               timePickerVisible: false,

@@ -1,18 +1,18 @@
 <template>
-  <table @click="handleQuarterTableClick" class="el-month-table">
+  <table @click="handleQuarterTableClick" class="el-quarter-table">
     <tbody>
     <tr>
       <td :class="getCellStyle(0)">
-        <a class="cell">{{ t('el.datepicker.months.halfyear.first') }}</a>
+        <a class="cell">一季度</a>
       </td>
       <td :class="getCellStyle(1)">
-        <a class="cell">{{ t('el.datepicker.months.halfyear.second') }}</a>
+        <a class="cell">二季度</a>
       </td>
       <td :class="getCellStyle(2)">
-        <a class="cell">{{ t('el.datepicker.months.halfyear.third') }}</a>
+        <a class="cell">三季度</a>
       </td>
       <td :class="getCellStyle(3)">
-        <a class="cell">{{ t('el.datepicker.months.halfyear.fourth') }}</a>
+        <a class="cell">四季度</a>
       </td>
     </tr>
     </tbody>
@@ -20,7 +20,6 @@
 </template>
 
 <script type="text/babel">
-  import Locale from 'element-ui/src/mixins/locale';
   import { hasClass } from 'element-ui/src/utils/dom';
 
   export default {
@@ -31,7 +30,6 @@
               type: Number
           }
       },
-      mixins: [Locale],
       methods: {
           getCellStyle(quarter) {
               const style = {};

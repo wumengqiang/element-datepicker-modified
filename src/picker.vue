@@ -53,8 +53,8 @@ const DEFAULT_FORMATS = {
     timerange: 'HH:mm:ss',
     daterange: 'yyyy-MM-dd',
     datetimerange: 'yyyy-MM-dd HH:mm:ss',
-    quarter: 'yyyy-MM-dd',
-    halfyear: 'yyyy-MM-dd',
+    quarter: 'yyyy-MM',
+    halfyear: 'yyyy-MM',
     year: 'yyyy'
 };
 const HAVE_TRIGGER_TYPES = [
@@ -308,12 +308,8 @@ export default {
         },
 
         selectionMode() {
-            if (this.type === 'week') {
-                return 'week';
-            } else if (this.type === 'month') {
-                return 'month';
-            } else if (this.type === 'year') {
-                return 'year';
+            if (['week', 'month', 'year', 'halfyear', 'quarter'].indexOf(this.type) !== -1) {
+                return this.type;
             }
 
             return 'day';
