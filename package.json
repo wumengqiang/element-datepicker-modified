@@ -1,6 +1,6 @@
 {
   "name": "element-datepicker-modified",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "based on the ElemeFE/element datepicker, add quarter halfyear year option",
   "main": "dist/index.js",
   "devDependencies": {

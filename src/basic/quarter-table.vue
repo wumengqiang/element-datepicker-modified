@@ -1,5 +1,5 @@
 <template>
-  <table @click="handleQuarterTableClick" class="el-quarter-table">
+  <table @click="handleQuarterTableClick" class="el-quarter-table  el-month-table">
     <tbody>
     <tr>
       <td :class="getCellStyle(0)">
